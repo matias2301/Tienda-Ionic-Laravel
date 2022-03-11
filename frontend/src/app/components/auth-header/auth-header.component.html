@@ -1,0 +1,115 @@
+<!-- <ion-col *ngIf="userLogged.name" size="3" class="ion-text-right"> -->
+  <ion-row *ngIf="userLogged.name">  
+    <ion-col class="ion-no-padding">
+      <ion-text class="userName">
+        Hola {{ userLogged.name }}
+      </ion-text>
+    </ion-col>
+    <ion-col>
+      <ion-button
+        fill="solid"
+        size="small"
+        color="dark"
+        (click)="logout()"      
+      >
+        Salir
+      </ion-button>
+    </ion-col>
+  </ion-row>
+<!-- </ion-col> -->
+
+<ion-col *ngIf="!userLogged.name" size="3" class="ion-text-right">
+  <ion-button
+    #btnLogin (mouseenter)="setMenuLogin(true)"
+    (mouseleave)="hideMenuLogin($event)"
+    fill="outline"
+    size="small"
+    color="dark"      
+  >
+    Ingresar
+  </ion-button>
+     
+  <ion-row    
+    *ngIf="menuLogin"     
+    class="dropLogin"
+    (mouseleave)="setMenuLogin(false)"
+  >
+    <form        
+      class="mat-elevation-z8 form"        
+      [formGroup]="loginForm"        
+    >
+      <ion-col size="12">
+        <mat-form-field color="primary">   
+        <mat-label><mat-icon>email</mat-icon><i>Email</i></mat-label>
+        <input
+            matInput              
+            formControlName="email"
+            placeholder="Enter your email" 
+            autocomplete="off"           
+        >
+        <mat-error *ngIf="loginForm.controls.email.hasError('required')">
+          Campo Email es <strong>requerido</strong>
+        </mat-error>
+        <mat-error *ngIf="loginForm.controls.email.hasError('pattern')">
+          Ingreso un email valido
+        </mat-error> 
+        </mat-form-field>          
+      </ion-col>
+
+      <ion-col size="12">
+        <mat-form-field>               
+        <mat-label><mat-icon>lock</mat-icon><i>Password</i></mat-label>          
+        <input
+            matInput
+            [type]="hide ? 'password' : 'text'"
+            formControlName="password"
+            placeholder="Enter your password"            
+        >
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="loginForm.controls.password.hasError('required')">
+          Campo Password es <strong>requerido</strong>
+        </mat-error>            
+        <mat-error *ngIf="loginForm.controls.password.hasError('minlength') || loginForm.controls.password.hasError('pattern')">
+          Must be at least 6 characters and contains a letter
+        </mat-error>         
+        </mat-form-field>          
+      </ion-col>
+
+      <ion-col size="12">
+        <a href="#"><p class="forgotPass">Olvide mi contraseña</p></a>
+        <ion-button
+          expand="block"
+          fill="solid"
+          size="small"
+          color="dark"
+          class="ion-text-capitalize"
+          (click)="onSubmitLogin(loginForm.value)"
+        >
+          Ingresar
+        </ion-button>
+
+        <ion-button
+          expand="block"
+          fill="solid"
+          size="small"
+          color="dark"  
+          class="btnInstagram ion-text-capitalize"
+          (click)="loginWithFacebook()"          
+        >
+          Ingresar con Facebook
+        </ion-button>
+      </ion-col>
+
+    </form>
+  </ion-row>        
+
+  <ion-button
+    fill="solid"
+    size="small"
+    color="dark"       
+  >
+    Registrarme
+  </ion-button>
+</ion-col>

@@ -1,0 +1,66 @@
+<ion-header class="mobile-header">
+  <ion-toolbar>
+    <ion-buttons [ngClass]="{menuButton: menuLogin}" slot="start">
+      <ion-menu-button menu="myMenu"></ion-menu-button>
+    </ion-buttons>
+
+    <ion-row [ngClass]="{authHeader: menuLogin}">
+      <ion-col size="6">
+        <ion-title>{{ title }}</ion-title>
+      </ion-col>
+      <ion-col size="6" class="ion-text-center">
+        <app-auth-header (showLogin)="setShowLogin($event)"></app-auth-header>
+      </ion-col>
+    </ion-row>
+
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-row class="ion-align-items-center header">
+  <ion-col size="2.5" class="ion-align-items-center">
+    <ion-title class="logo">Tienda Maylu</ion-title>
+  </ion-col>
+
+  <ion-col size="6.5" class="ion-text-left">
+    <ion-button fill="clear" color="dark" routerLink="/home" routerDirection="root" routerLinkActive="active-item"
+      [routerLinkActiveOptions]="{exact: true}">
+      Inicio
+    </ion-button>
+
+    <!-- Button with dropdown -->
+    <ion-button #productbtn routerLink="/home" routerDirection="root" (mouseenter)="dropdown=true" (mouseleave)="hideDropdown($event)" fill="clear" color="dark">
+      Categorias
+      <ion-icon slot="end" [name]="dropdown ? 'chevron-down' : 'chevron-up'"></ion-icon>
+    </ion-button>
+    <div *ngIf="dropdown" class="dropdown" (mouseleave)="dropdown = false" #dropdownbox>
+      <ion-item (click)="setCategory('alfombra')" button lines="none">
+        Alfombras
+      </ion-item>
+      <ion-item (click)="setCategory('amigurrumi')" button lines="none">
+        Amigurrumis
+      </ion-item>
+      <ion-item (click)="setCategory('manta')" button lines="none">
+        Mantas
+      </ion-item>
+      <ion-item (click)="setCategory('titere')" button lines="none">
+        Titeres
+      </ion-item>
+    </div>
+
+    <ion-button fill="clear" color="dark" routerLink="/contact" routerDirection="root">
+      Contacto
+    </ion-button>
+    <ion-button *ngIf="userRole !== 'admin'" fill="clear" color="dark" routerLink="/about" routerDirection="root">
+      Acerca de...
+    </ion-button>
+
+    <ion-button *ngIf="userRole === 'admin'" fill="clear" color="dark" routerLink="/adminPanel" routerDirection="root">
+      Admin
+    </ion-button>
+  </ion-col>
+  
+  <ion-col size="3"  class="ion-text-center">
+    <app-auth-header (userRole)="setUserRole($event)"></app-auth-header>
+  </ion-col>
+
+</ion-row>

@@ -1,0 +1,31 @@
+ion-toolbar {
+  --background: #e2e2e2;
+}
+.divider {
+    display: flex;    
+
+    &:before,
+    &:after {
+      content: "";
+      flex: 1;
+    }
+  }
+.gradient {
+  align-items: stretch;
+  margin-bottom: 1em;
+  height: 3em;
+  line-height: 3em;
+  color: white;
+  background: black;    
+  
+  &:before {
+    background: linear-gradient(to right, white, black);
+  }
+  
+  &:after {
+    background: linear-gradient(to left, white, black);
+    }
+}
+h2 {
+  margin-top: 0;
+}

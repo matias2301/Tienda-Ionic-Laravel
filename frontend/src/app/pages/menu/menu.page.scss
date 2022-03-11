@@ -1,0 +1,36 @@
+@media(min-width: 768px) {
+    ion-router-outlet {
+      margin-top: 63px;      
+    }
+  }
+   
+@media(max-width: 768px) {
+    ion-router-outlet {
+        margin-top: 56px;        
+      }
+}
+
+ion-menu {
+  --background: linear-gradient(90deg, rgba(9,44,131,1) 0%, rgba(208,224,232,1) 0%, rgba(170,190,252,1) 100%);
+}
+ion-header {
+  padding: 1rem;
+}
+ion-toolbar {
+  --background: linear-gradient(90deg, rgba(9,44,131,1) 0%, rgba(208,224,232,1) 0%, rgba(170,190,252,1) 100%);     
+}
+ion-title {
+  color: var(--ion-color-dark);
+  font-weight: 700;
+  text-align: center;    
+}
+ion-content {        
+  --background: linear-gradient(90deg, rgba(9,44,131,1) 0%, rgba(208,224,232,1) 0%, rgba(170,190,252,1) 100%);  
+}
+// .active-item {
+//     color: var(--ion-color-primary);
+//     font-weight: 500;
+//     ion-icon {
+//         color: var(--ion-color-primary);
+//     }
+// }

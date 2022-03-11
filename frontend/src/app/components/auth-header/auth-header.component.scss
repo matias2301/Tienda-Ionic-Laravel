@@ -1,0 +1,36 @@
+.dropLogin {       
+    position: absolute;
+    width: 200px;
+    top: 45px;
+    right: 55px;
+    z-index: 1;
+    ion-item:hover {
+        --ion-item-color: var(--ion-color-primary);
+    }      
+  }
+  .forgotPass {
+    text-align: left;
+    font-size: 12px;
+    margin: 10px 0 5px 15px;  
+  }
+  mat-form-field {  
+    width: 90%;
+    margin-right: 5px;
+  }
+  mat-icon {
+    margin-right: 5px;
+  }
+  .form{  
+    background-color: #e2e2e2;
+    border-radius: 10px;
+    padding: 10px 15px 0 15px;  
+  }
+  .btnInstagram{
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+  input::placeholder { font-size: 10px; } 
+  .userName {
+    color: rgba(22, 46, 155);            
+    font-size: 17px;
+  }

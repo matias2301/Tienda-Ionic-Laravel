@@ -1,0 +1,27 @@
+
+<ion-grid>
+  <ion-row class="ion-justify-content-center">    
+    <ion-col size="3" offset="9" *ngIf="filter">
+      <ion-item>        
+          <ion-label>Filtro Aplicado:</ion-label>
+          <ion-chip>
+            <ion-label>{{ filter }}</ion-label>
+            <ion-icon name="close-circle" (click)="resetFilter()"></ion-icon>
+          </ion-chip>         
+      </ion-item>
+    </ion-col>
+
+    <ion-col size="6" size-sm="6" size-md="4" size-lg="3" size-xl="2" *ngFor="let p of showProducts">
+      <ion-card (click)="showDetails(p)" tappable>
+        <ion-img [src]= "p.img[0]"></ion-img>
+        <ion-card-header>
+          <ion-card-subtitle>{{ p.subtitle }}</ion-card-subtitle>
+          <ion-card-title>{{ p.title }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          {{ p.description | slice:0:75 }}...
+        </ion-card-content>
+      </ion-card>
+    </ion-col>            
+  </ion-row>
+</ion-grid>

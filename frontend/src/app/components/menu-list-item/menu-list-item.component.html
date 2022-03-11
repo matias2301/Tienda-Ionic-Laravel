@@ -1,0 +1,25 @@
+<a
+  mat-list-item
+  (click)="onItemSelected(item)"
+  [ngStyle]="{'padding-left': (depth * 12) + 'px'}"  
+  [ngClass]="{
+    'active': item.route ? router.isActive(item.route, true): false,
+    'expanded': expanded,
+    'last': item.route === 'signout' || item.route === 'login',
+    'hide': item.route === 'panelAdmin' && admin === 'false'
+    }"
+  class="menu-list-item"
+  *ngIf="item.show === 'always' || item.show === logged"
+>
+  <mat-icon class="routeIcon">{{item.iconName}}</mat-icon>
+  <span class="menu-item-text">{{item.displayName}}</span>
+  <span class="twistie-separator"></span>
+  <span  *ngIf="item.children && item.children.length">
+    <mat-icon class="menu-twistie" [@indicatorRotate]="expanded ? 'expanded': 'collapsed'">
+      expand_more
+    </mat-icon>
+  </span>
+</a>
+<div *ngIf="expanded">
+  <app-menu-list-item class="menu-child" *ngFor="let child of item.children" [item]="child" [depth]="depth+1"></app-menu-list-item>
+</div>

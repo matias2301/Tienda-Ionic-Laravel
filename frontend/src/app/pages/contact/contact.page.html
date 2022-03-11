@@ -1,0 +1,89 @@
+<ion-content>
+
+  <ion-row>
+    <form
+      class="mat-elevation-z8 form"    
+      [formGroup]="contactForm"        
+    >
+      <ion-text>
+        <h1>Consulta nuestro productos</h1>
+      </ion-text>
+      
+      <ion-col>
+        <mat-form-field appearance="outline" color="primary">   
+        <mat-label>Nombre</mat-label>
+        <input
+            matInput              
+            formControlName="name"
+            placeholder="Ingresa tu nombre" 
+            autocomplete="off"           
+        >
+        <mat-error *ngIf="contactForm.controls.name.hasError('required')">
+          Este campo es <strong>requerido</strong>
+        </mat-error>
+        </mat-form-field>          
+      </ion-col>
+
+      <ion-col>
+        <mat-form-field appearance="outline" color="primary">   
+        <mat-label>Email (Opcional)</mat-label>
+        <input
+            matInput              
+            formControlName="email"
+            placeholder="Ingresa un mail para que te podamos responder" 
+            autocomplete="off"           
+        >
+        </mat-form-field>          
+      </ion-col>
+
+      <ion-col>
+        <mat-form-field appearance="outline" color="primary">   
+        <mat-label>Asunto</mat-label>
+        <input
+            matInput              
+            formControlName="subject"
+            placeholder="Ingresa el asunto" 
+            autocomplete="off"           
+        >
+        <mat-error *ngIf="contactForm.controls.subject.hasError('required')">
+          Este campo es <strong>requerido</strong>
+        </mat-error>
+        </mat-form-field>          
+      </ion-col>
+
+      <ion-col>
+        <mat-form-field appearance="outline" color="primary">   
+        <mat-label>Comentario</mat-label>
+        <textarea
+            matInput
+            rows="5"              
+            formControlName="comment"
+            placeholder="Ingresa tu comentario" 
+            autocomplete="off"           
+        ></textarea>
+        <mat-error *ngIf="contactForm.controls.comment.hasError('required')">
+          Este campo es <strong>requerido</strong>
+        </mat-error>
+        </mat-form-field>          
+      </ion-col>
+      
+      <ion-col>
+        <ion-button
+          expand="block"
+          fill="solid"
+          size="small"
+          color="dark"
+          class="btnSubmit"
+          (click)="sendEmail()"
+        >
+          Enviar
+        </ion-button>
+      </ion-col>
+
+    </form>
+  </ion-row>
+
+  <div class="bottom">
+    <app-footer-page></app-footer-page>
+  </div>
+</ion-content>

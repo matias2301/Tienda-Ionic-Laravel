@@ -1,0 +1,13 @@
+ion-card {    
+    margin: 1rem;
+    height: 60vh;
+    // width: 200px;
+    border-radius: 10px;
+    &:hover {
+        opacity: .75;
+    }
+}
+ion-img {
+    object-fit:cover;
+    height: 40vh;  
+}
